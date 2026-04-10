@@ -17,7 +17,7 @@ metadata:
 Scan the user's local music libraries to build a taste profile, then generate
 a personalized playlist using the MiniMax Music API.
 
-**Requires**: `minimax-music-gen` skill (for playback scripts)
+**Self-contained**: all scripts (including playback) are in this skill's `scripts/` directory.
 
 ## Prerequisites
 
@@ -302,6 +302,10 @@ The user can:
 
 Generate all songs concurrently, then play the complete playlist.
 
+**IMPORTANT**: Do NOT play individual songs after each `mmx music generate` call.
+Skip any per-song playback logic from the `minimax-music-gen` skill.
+Only play the complete playlist at the end using `play_playlist.py`.
+
 ### Concurrent Generation
 
 **Concurrency rules:**
@@ -378,7 +382,7 @@ If generation fails for a song, log the error and continue — do not block othe
 Play the complete playlist using the dedicated script:
 
 ```bash
-python3 ~/.claude/skills/minimax-music-gen/scripts/play_playlist.py \
+python3 ~/.claude/skills/minimax-music-playlist/scripts/play_playlist.py \
   ~/Music/minimax-gen/playlists/<playlist_name>/ \
   --lang $LANG \
   --auto
@@ -395,7 +399,7 @@ ls ~/Music/minimax-gen/playlists/
 Show available playlists and play the selected one:
 
 ```bash
-python3 ~/.claude/skills/minimax-music-gen/scripts/play_playlist.py \
+python3 ~/.claude/skills/minimax-music-playlist/scripts/play_playlist.py \
   ~/Music/minimax-gen/playlists/<playlist_name>/ \
   --lang $LANG \
   --auto
@@ -512,6 +516,4 @@ Show available playlists and play the selected one song by song.
 - Generated playlists are saved alongside individual songs in `~/Music/minimax-gen/playlists/`.
 - The taste profile is persistent across sessions.
 - All scripts use Python stdlib only — no pip dependencies.
-- Reuses `play_music.py`, `play_playlist.py` from
-  `~/.claude/skills/minimax-music-gen/scripts/` for playback.
 - Music generation uses `mmx music generate` CLI directly.
