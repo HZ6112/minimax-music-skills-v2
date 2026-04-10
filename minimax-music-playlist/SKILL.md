@@ -171,7 +171,6 @@ weighted scores, and outputs a taste profile.
 🎵 你的音乐画像：
   📊 数据源：QQ音乐 145首 | Apple Music 42首 | Spotify 20首 | 网易云 15首 | 已生成 9首
   🎸 Top 风格：华语流行 35% | R&B 20% | K-pop 10% | 中国风 8%
-  🌍 语言：中文 70% | 韩语 12% | 英语 10% | 日语 8%
   💭 情绪：忧郁 30% | 浪漫 25% | 温暖 20%
   🎤 声线：偏好男声 55% | 女声 40%
   🎵 Top 艺术家：周杰伦、陶喆、孙燕姿、王力宏、方大同
@@ -184,7 +183,6 @@ weighted scores, and outputs a taste profile.
 🎵 Your Music Profile:
   📊 Sources: QQ Music 145 | Apple Music 42 | Spotify 20 | NetEase 15 | Generated 9
   🎸 Top styles: C-pop 35% | R&B 20% | K-pop 10% | Chinese-style 8%
-  🌍 Languages: Chinese 70% | Korean 12% | English 10% | Japanese 8%
   💭 Moods: Melancholy 30% | Romantic 25% | Warm 20%
   🎤 Vocals: Male 55% | Female 40%
   🎵 Top artists: Jay Chou, David Tao, Stefanie Sun, Leehom Wang, Khalil Fong
@@ -307,8 +305,7 @@ Generate all songs concurrently, then play the complete playlist.
 ### Concurrent Generation
 
 **Concurrency rules:**
-- Using `mmx` CLI: up to **5 songs in parallel**
-- Using `generate_music.py` fallback: up to **2 songs in parallel**
+- Up to **5 songs in parallel**
 
 Launch songs in batches. For a 5-song playlist with mmx, launch all 5 at once.
 For a 10-song playlist, launch songs 1-5, then 6-10 when the first batch finishes.

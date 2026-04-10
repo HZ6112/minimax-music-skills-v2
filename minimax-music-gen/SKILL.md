@@ -140,29 +140,24 @@ infer instrumental + basic mode and proceed.
 
 1. **Expand the description into a prompt**: Take the user's one-liner and expand it into a
    rich music prompt. Read `references/prompt_guide.md` for the style vocabulary and
-   prompt structure. The **music generation prompt must match the user's language** (LANG):
-   - When LANG=zh, write the prompt in Chinese
-   - When LANG=en, write the prompt in English
+   prompt structure. **The API prompt should always be written in English** for best
+   generation quality, regardless of the user's language.
    
    Follow this pattern:
    ```
-   # LANG=zh example:
-   一首 [情绪] [BPM 可选] 的 [曲风] 歌曲，[人声描述]，关于 [主题/叙事]，
-   [氛围/场景]，[乐器和编曲元素]。
-   
-   # LANG=en example:
    A [mood] [BPM optional] [genre] song, featuring [vocal description],
    about [narrative/theme], [atmosphere], [key instruments and production].
    ```
 
 2. **Show the user a preview** before generating:
 
-   **If LANG=zh:**
+   **If LANG=zh** — translate the prompt into Chinese for display, note the API uses English:
    ```
    🎵 即将为你生成：
    类型：人声音乐 / 纯音乐
-   Prompt：独立民谣, 忧郁, 内省, 原声吉他, 温柔女声, 深夜独处
-   歌词：自动生成（--lyrics-optimizer）
+   Prompt：一首忧郁内省的独立民谣，温柔女声，原声吉他，深夜独处的氛围
+   （API 将使用英文 prompt 以获得最佳效果）
+   歌词：自动生成
    
    确认生成？(直接回车确认，或告诉我要改什么)
    ```
